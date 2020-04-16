@@ -1,0 +1,31 @@
+<!--pages/order_detail/order_detail.wxml-->
+<!-- <view class="container"> -->
+<view class="goods-detail">
+<view class="goods">商品详情</view>
+<image wx:if="{{order.goodsName=='明泰IC卡读写器MT3'}}" src='{{mtsrc}}'></image>
+<image wx:if="{{order.goodsName=='德卡T6智能卡读卡器'}}" src='{{dksrc}}'></image>
+<image wx:if="{{order.goodsName=='Datacard CD800彩色带(650张)'||order.goodsName=='Datacard CD800彩色带(500张)'}}" src='{{sdsrc}}'></image>
+<text>
+商品名称: {{order.goodsName}} \n
+商品价格：￥ {{order.goodsPrice}} \n
+商品购买数量: {{order.buyNum}} \n
+</text>
+</view>
+<view class="order-detail">
+<view class="order">订单详情</view>
+<text>
+订单编号：{{order.orderNum}} \n
+订单创建时间：{{order.orderTime}} \n
+支付状态：{{order.orderStatus}} \n
+支付方式：{{order.orderType}} \n
+</text>
+</view>
+
+<view class="addr-detail">
+<view class="addr">收货地址</view>
+<text>
+{{order.buyerName}} {{order.buyerNumber}} \n
+{{order.buyerAddress}} \n
+</text>
+</view>
+<!-- </view> -->

@@ -1,0 +1,51 @@
+<!--pages/good_detail_sd/good_detail_sd.wxml-->
+<!--pages/good_detail/good_detail.wxml-->
+<view class='container'>
+<!-- 商品大图区域 -->
+<view class='bigImg'>
+<image  src='{{sdscr}}'></image>
+</view>
+<!-- 商品价格名称区域 -->
+<view class='Info'>
+<text style='color:red'>￥{{price}}</text>
+<text>{{good}}</text>
+</view>
+<!-- 规格区域 -->
+<view class='specification' bindtap='clickArea'>
+<text class='text1'>规格</text>
+<text class='text2'>适用机型 型号...</text>
+<view class='icon'>
+      <image src='/image/my_order.png'></image>
+      </view>
+</view>
+<!-- 规格弹窗区域 -->
+<view class='myToast' hidden='{{nullHouse}}'>
+<!-- 500张一卷色带 -->
+<view class='rowToast'  wx:if="{{good=='Datacard CD800彩色带(500张)'}}" wx:for='{{SD1}}' wx:for-item='specification' wx:key='{{SD1.specificationItem}}'>
+<view class='item'>{{specification.specificationItem}}</view>
+<view class='info'>{{specification.specificationInfo}}</view>
+</view>
+<!-- 650张一卷色带 -->
+<view class='rowToast'  wx:if="{{good=='Datacard CD800彩色带(650张)'}}" wx:for='{{SD2}}' wx:for-item='specification' wx:key='{{SD2.specificationItem}}'>
+<view class='item'>{{specification.specificationItem}}</view>
+<view class='info'>{{specification.specificationInfo}}</view>
+</view>
+<button class='btnToast' bindtap='closeToast'>完成</button>
+</view>
+
+<view class='block'></view>
+<!-- 商品信息区域 -->
+<view class='good-info'>
+<text>产品细节</text>
+<view class='detail'>
+<block wx:for='{{sdimg}}' wx:key='{{index}}'>
+<image src='{{item}}' data-index='{{index}}' bindtap='previewImg'></image>
+</block>
+</view>
+</view>
+<view class='btn'>
+<view>
+<button class='btn-buy' bindtap='onBuy'> 购买</button>
+</view>
+</view>
+</view>

@@ -1,0 +1,25 @@
+/* pages/order_detail/order_detail.wxss */
+
+/* .container{
+  padding: 16rpx 16rpx;
+} */
+.goods-detail,.order-detail,.addr-detail{
+    display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  padding-left: 16rpx;
+}
+
+image{
+  padding-top: 16rpx;
+  width: 100%;
+}
+text{
+  font-size: 25rpx;
+}
+.goods,.order,.addr{
+  border-left: 2rpx solid red;
+  padding-left: 12rpx;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}

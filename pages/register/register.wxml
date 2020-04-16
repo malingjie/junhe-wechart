@@ -1,0 +1,92 @@
+<form class="main" bindsubmit='onSubmit'>
+  <view class='data'>
+    <view class='item'>
+      <text>联系人</text>
+      <input type='text'  name='username'  placeholder='请填写姓名'></input>
+      <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+     <view class='item'>
+      <text>手机号</text>
+      <input type='number' name='phoneNumber' maxlength='11'   placeholder='11位手机号码'></input>
+       <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+    <view class='item'>
+      <text>密码设置</text>
+      <input type='password' name='password'   placeholder='请输入密码'></input>
+       <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+     <view class='item'>
+      <text>地区</text>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          {{region[0]}} {{region[1]}} {{region[2]}}
+        </view>
+      </picker>
+      <view class='icon'>
+      <image src='/image/my_order.png'></image>
+      </view>
+    </view>
+     <view class='item'>
+      <text>申购单位名称</text>
+      <input type='text'   name='compName' placeholder='请输入申购单位名称'></input>
+      <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+ <view class='item'>
+      <text>选择上传文件类型</text>
+       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker1">
+     当前选择:{{array[index]}}
+    </view>
+  </picker>
+    </view>
+
+<view class='item' wx:if="{{index==0}}">
+      <text>统一社会信用代码</text>
+      <input type='text'   name='creditCode' placeholder='请输入社会统一信用代码'></input>
+      <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+<view class='item'  wx:if="{{index==0}}">
+      <text>上传营业执照</text>
+      <button bindtap='chooseImage1'>添加附件</button>
+      <view class='img'>
+      <image src='{{src}}'></image>
+      </view>
+        <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+<view class='item'  wx:if="{{index==1}}">
+      <text>医疗、药品许可证代码</text>
+      <input type='text'   name='medicalCode' placeholder='请输入医疗、药品许可证代码'></input>
+      <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+<view class='item'  wx:if="{{index==1}}">
+      <text>上传医疗、药品许可证</text>
+       <button bindtap='chooseImage2'>添加附件</button>
+       <view class='img'>
+      <image src='{{src}}'></image>
+      </view>
+      <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+      </view>
+    </view>
+
+  </view>
+   <view class='register'>
+    <text class='tip'>请根据实际情况填写并上传营业执照或医疗、药品许可证\n带*为必填项，申购单位名称请填写营业执照上单位名称全称，否则影响用户审核(注：用户注册提交后需审核通过方可登录)
+    审核不通过的可能原因：注册地区与营业执照地区不一致</text>
+    </view>
+  <button class='btn active' form-type='submit'>提交</button>
+</form>

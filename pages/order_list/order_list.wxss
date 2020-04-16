@@ -1,0 +1,71 @@
+/* pages/order_list/order_list.wxss */
+
+.main{
+width: 100%;
+  display: flex;
+  flex-direction: column;
+    overflow: hidden;
+}
+
+.orderText{
+  margin: 20rpx;
+  font-size: 20px
+}
+
+.order{
+  margin: 20rpx;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row
+}
+
+.image{
+width: 30%;
+height: 100%
+}
+
+.image image{
+  height: 100%;
+  width: 100%;
+}
+.text{
+    width: 50%
+}
+
+.forbill{
+  width: 20%
+}
+/* 申请发票按钮 */
+.bill{
+    width: 100%;
+font-size: 10px;
+height: 60rpx;
+}
+
+.warn{
+    font-size: 36rpx;
+    padding: 50rpx 20rpx;
+}
+.list-item-touch-active .image{
+  margin-left: -100rpx;
+}
+.list-item-touch-active .image, .list-item-touch-active .item-delete {
+  -webkit-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+.item-delete{
+  width: 100rpx;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  color: #fff;
+  font-size: 32rpx;
+  -webkit-transform: translateX(180rpx);
+  transform: translateX(180rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}

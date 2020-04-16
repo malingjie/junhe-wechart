@@ -1,0 +1,45 @@
+<!--pages/wode/wode.wxml-->
+<view class="user-box">
+  <block wx:if="{{loginStatus=='1'}}">
+    <image class="userimg" src="{{userImg}}" bindtap="showUser">
+    </image>
+    <view class="user-info">
+      {{userName}}
+    </view>
+  </block>
+  <block wx:else>
+    <button  bindtap='getMyInfo'>未登录，请登录</button>
+    <text class='register' bindtap='goToRegist'>没有账号？点此注册</text>
+  </block>
+</view>
+<view class="service" style="display:flex;flex-direction:row">
+  <!-- <view class="wait-pay">待付款</view>
+  <view class="custom-service">退款 / 售后</view> -->
+</view>
+
+
+<view class="user-operation">
+  <view  class="service-content" bindtap='myOrder'>
+    <image class="service-img" src="/image/m2.png"></image>
+    <view class="text">微信支付专区</view>
+  </view>
+
+    <view class="blank"></view>
+  <view  class="service-content" bindtap='publicOrder'>
+    <image class="service-img" src="/image/m2.png"></image>
+    <view class="text">公对公转账专区</view>
+  </view>
+
+  <view class="blank"></view>
+  <view  class="service-content" bindtap='bindMakePhoneCall'>
+    <image class="service-img" src="/image/m16.png"></image>
+    <view class="text">客服中心</view>
+  </view>
+  <!-- <view  class="service-content">
+    <image class="service-img" src="/image/m13.png"></image>
+    <view>修改密码</view>
+  </view> -->
+</view>
+<view class="logout">
+  <button id="cancelBtn" type="primary" bindtap='logOut'>注销</button>
+</view>

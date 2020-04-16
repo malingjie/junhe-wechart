@@ -1,0 +1,31 @@
+<!--pages/order_list/order_list.wxml-->
+<view class='main'>
+<text class='orderText'>订单列表：</text>
+<block wx:if="{{orders==''}}">
+<view class='warn'>
+您目前暂无订单哦~
+</view>
+</block>
+<block wx:else>
+<view class="order {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{orders}}" wx:for-index="index"   wx:key="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-id="{{item.id}}" >
+<view class='image' data-id="{{index}}" bindtap="goOrderDetail">
+<image wx:if="{{item.goodsName=='明泰IC卡读写器MT3'}}" src='{{mtsrc}}'></image>
+<image wx:if="{{item.goodsName=='德卡T6智能卡读卡器'}}" src='{{dksrc}}'></image>
+<image wx:if="{{item.goodsName=='Datacard CD800彩色带(650张)'||item.goodsName=='Datacard CD800彩色带(500张)'}}" src='{{sdsrc}}'></image>
+</view>
+<view class='text' data-id="{{index}}" bindtap="goOrderDetail">
+<text decode='{{true}}'>
+商品名：{{item.goodsName}}\n￥{{item.goodsPrice}}\t*{{item.buyNum}}
+共计{{item.buyNum}}件商品 合计：￥{{item.allgoodsPrice}} 
+支付方式：{{item.orderType}} \n 状态:{{item.orderStatus}} &nbsp;<block wx:if="{{item.remarks!=null}}">{{item.remarks}}</block><block wx:else>订单处理中</block>
+</text>
+</view>
+<view class="forbill">
+<button class='bill' wx:if="{{(item.orderStatus=='已支付'||(item.goodsName=='Datacard CD800彩色带(500张)'&&item.publicStatus=='1')||(item.goodsName=='Datacard CD800彩色带(650张)'&&item.publicStatus=='1'))&&!item.status}}" bindtap='goBill'  data-id="{{index}}">开票</button>
+ <text class='bill' wx:if="{{item.status==0}}" >开票中</text>
+<text class='bill' wx:if="{{item.status==1}}" >已开票,请查收\n邮箱</text> 
+</view>
+<view class="item-delete" bindtap="delBill" data-id="{{index}}">删除</view>
+</view>
+</block>
+</view>

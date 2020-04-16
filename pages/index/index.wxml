@@ -1,0 +1,33 @@
+<view class='container'>
+<view class="title">
+<image class='corn' src='/image/a1.png'></image>
+<view class="re"><text>当前地区：{{region?region:'未登录，请先登录'}}</text></view>
+<view class="on"><text>营业中</text></view>
+</view>
+<view class='swiper-box'>
+<swiper
+bindchange="swiperChange"
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="dots"> 
+      <block wx:for="{{imgUrls}}" wx:key="unique"> 
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view> 
+      </block> 
+</view>
+</view>
+<view class='show-imgs' >
+<view class="show-image"  wx:for="{{imgs}}" wx:for-index="index"   wx:key="{{index}}">
+<view class="text"><image src='/image/hot.png'></image><view><text>{{item.info}}</text></view></view>
+ <image data-id="{{index}}" class="detail-image"  src="{{item.src}}" bindtap='goToDetail' />
+ </view>
+</view>
+</view>

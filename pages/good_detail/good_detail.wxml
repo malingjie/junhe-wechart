@@ -1,0 +1,75 @@
+<!--pages/good_detail/good_detail.wxml-->
+<view class='container'>
+<!-- 商品大图区域 -->
+<view class='bigImg'>
+<image wx:if="{{info=='明泰IC卡读写器MT3'}}" src='{{mtsrc}}'></image>
+<image wx:if="{{info=='德卡T6智能卡读卡器'}}" src='{{dksrc}}'></image>
+</view>
+<!-- 商品价格名称区域 -->
+<view class='Info'>
+<text style='color:red'>￥{{price}}</text>
+<text>{{info}}</text>
+</view>
+<!-- 规格区域 -->
+<view class='specification' bindtap='clickArea'>
+<text class='text1'>规格</text>
+<text class='text2'>适用机型 型号...</text>
+<view class='icon'>
+      <image src='/image/my_order.png'></image>
+      </view>
+</view>
+<!-- 规格弹窗区域 -->
+<view class='myToast' hidden='{{nullHouse}}'>
+<!-- 德卡T6信息弹出 -->
+<view class='rowToast'  wx:if="{{info=='德卡T6智能卡读卡器'}}" wx:for='{{T6}}' wx:for-item='specification' wx:key='{{T6.specificationItem}}'>
+<view class='item'>{{specification.specificationItem}}</view>
+<view class='info'>{{specification.specificationInfo}}</view>
+</view>
+<!-- 明泰MT3信息弹出 -->
+<view class='rowToast'  wx:if="{{info=='明泰IC卡读写器MT3'}}" wx:for='{{MT3}}' wx:for-item='specification' wx:key='{{MT3.specificationItem}}'>
+<view class='item'>{{specification.specificationItem}}</view>
+<view class='info'>{{specification.specificationInfo}}</view>
+</view>
+<button class='btnToast' bindtap='closeToast'>完成</button>
+</view>
+
+<view class='block'></view>
+<!-- 商品信息区域 -->
+<view class='good-info'>
+<text>商品信息</text>
+<view class='detail'>
+<image wx:if="{{info=='明泰IC卡读写器MT3'}}" src='{{mtsrc}}'></image>
+<image wx:if="{{info=='德卡T6智能卡读卡器'}}" src='{{dksrc}}'></image>
+<scroll-view scroll-y><text wx:if="{{info=='德卡T6智能卡读卡器'}}">一、产品简介
+T6 读写器可选择 RS232 接口或 USB 接口，USB 接口采用免驱动技术，采用下落式卡座。T6 结构紧凑，符合人体工程学设计，单手插拔卡，操作简便，适用于频繁用卡的柜面业务。
+T6 读写器突出特点是可集成 U 盘功能和读写器加密功能，U 盘功能可以存储软件和数据，并可自动运行；读写器加密功能，可以对该读写器进行加密，使系统控制更安全。
+T6 读写器最多可支持四个卡座，主卡座用于普通常规的使用方式，辅卡座可方便的插入管理员卡来起到认证和管理的作用，解决了大部分读写器认证卡必须使用内置的 SAM 卡的方式，而同时为了兼容性和多方认证的考虑，又增加了 2 个内置的 SAM 卡座。
+T6 读写机具作为 IC 卡系统集成必备的前端处理设备，极大地提高了系统的安全性和应用的方便性，能更加优秀的服务于工商、电信、邮政、税务、银行、保险、医疗及各种收费、储值、查询等智能卡管理应用系统中。
+二、产品特点
+1. USB 免驱动技术，即插即用
+2. 卡型支持全面、开发接口完善
+3. 支持在线升级
+三、典型案例
+河北省社保·江西省社保·吉林省社保
+内蒙古自治区社保·宁夏自治区社保
+</text>
+<text wx:if="{{info=='明泰IC卡读写器MT3'}}">产品特性
+1. 接触式读写器 
+2. USB2.0 通讯（12Mbps 全速）
+3. 无需驱动、即插即用、使用方便快捷
+4. 双色指示灯，指示电源与通讯状态
+5. 可控蜂鸣器
+6. 外接密码键盘 
+7. 选配 3 个 SAM 小卡座
+支持卡型
+接触式：符合 ISO7816 标准的 A 类 5V/B 类 3V/C 类 1.8V 卡
+</text>
+</scroll-view>
+</view>
+</view>
+<view class='btn'>
+<view>
+<button class='btn-buy' bindtap='onBuy'> 购买</button>
+</view>
+</view>
+</view>

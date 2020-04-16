@@ -1,0 +1,36 @@
+<!--pages/goods_classify/goods_classify.wxml-->
+<!-- 读卡器显示专区 -->
+<view wx:if="{{type=='读卡器专区'}}">
+<view class='forText'>
+<text>读卡器专区</text>
+</view>
+<view wx:if="{{goods.length>0}}" class='show-imgs' >
+<view class="show-image"  wx:for="{{goods}}" wx:for-index="index"   wx:key="{{index}}">
+ <image wx:if="{{item.goodsName=='德卡T6智能卡读卡器'}}" data-id="{{index}}" class="detail-image"  src="{{dksrc}}" bindtap='goToDetail' />
+ <image wx:if="{{item.goodsName=='明泰IC卡读写器MT3'}}" data-id="{{index}}" class="detail-image"  src="{{mtsrc}}" bindtap='goToDetail' />
+ <text>{{item.goodsName}}</text>
+ </view>
+</view>
+<view wx:else class='warn'>
+<text>抱歉，您所在的区域暂无读卡器出售哦~</text>
+</view>
+</view>
+
+<!-- 色带显示专区 -->
+<view wx:elif="{{type=='Datacard色带专区'}}">
+<view class='forText'>
+<text>色带专区</text>
+</view>
+<view class='show-imgs' >
+<view class="show-image">
+ <image data-id="Datacard CD800彩色带(500张)"  data-code='535000003' class="detail-image"  src="{{sdsrc}}" bindtap='goToSDDetail' />
+ <text>Datacard CD800彩色带(500张)</text>
+ </view>
+ <view class="show-image">
+ <image data-id="Datacard CD800彩色带(650张)"  data-code='535000004' class="detail-image"  src="{{sdsrc}}" bindtap='goToSDDetail' />
+ <text>Datacard CD800彩色带(650张)</text>
+ </view>
+</view>
+</view>
+
+

@@ -1,0 +1,81 @@
+<!--pages/bill/bill.wxml-->
+<text class='formInfo'>请于百度云盘下载并填写盖章公对公转账申购单，然后上传至本系统(<text style="color:red">发票请求审核未通过该笔发票申请将会作废，请重新在订单页发起申请</text>)
+未通过原因如:1.申购单未盖章 2.上传图片不清晰(建议上传高清图) 3.信息填写不完善等 如有疑问，请联系客服
+百度云盘地址: https://pan.baidu.com/s/ \n 13lcjNuwfQaZp4D2TXuwoYw</text>
+<form>
+  <view class='item'>
+    <text>发票抬头</text>
+    <input type='text' bindinput='getCompName' placeholder='请输入发票抬头(必填)'></input>
+    <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view>
+  </view>
+   <view class='item'>
+    <text>出库单位</text>
+    <input type='text' bindinput='getRealComp' placeholder='实际收货单位(必填)'></input>
+    <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view>
+  </view>
+  <view class='item'>
+    <text>税号</text>
+    <input type='text' bindinput='getTaxeCode' placeholder='请输入税号(必填)'></input>
+    <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view>
+  </view>
+  <view class='item'>
+    <text>单位地址</text>
+    <input type='text' bindinput='getCompAddr' placeholder='请输入单位地址(纸质专票必填)'></input>
+    <!-- <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view> -->
+  </view>
+    <view class='item'>
+    <text>电话号码</text>
+    <input type='number' bindinput='getConnectPhone' maxlength='12' placeholder='请输入电话号码(纸质专票必填)'></input>
+    <!-- <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view> -->
+  </view>
+
+      <view class='item'>
+    <text>开户银行</text>
+    <input type='text' bindinput='getBank' placeholder='请输入开户银行(纸质专票必填)'></input>
+    <!-- <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+    </view> -->
+    </view>
+
+          <view class='item'>
+    <text>银行账户</text>
+    <input type='text' bindinput='getBankCode' placeholder='请输入银行账户(纸质专票必填)' minlength='16'  maxlength='19'></input>
+    <!-- <view class='icon'>
+      <text style='color:red;font-size:20px'>*</text>
+    </view> -->
+    </view>
+
+
+  
+  <view class='item'>
+    <text>发票接受地址</text>
+    <input type='text' bindinput='getAddr' placeholder='请输入您的发票接收地址'></input>
+    <view class='icon'>
+    <text style='color:red;font-size:20px'>*</text>
+    </view>
+  </view>
+  <view class='item'>
+    <text class="buyform">上传申购单</text>
+    <button bindtap='chooseImage'>添加申购单</button>
+    <view class='img'>
+      <image src='{{src}}'></image>
+    </view>
+    <!-- <button class='bill' bindtap='uploadForm' data-id="{{index}}">确认上传</button> -->
+  </view>
+  <view class='register'>
+    <text class='tip'>请确认所填信息，一旦点击无法修改\n发票地址为接收发票的地址，若开电子发票，请填写接收邮箱地址，若开纸质发票，请填写发票邮寄地址（暂只支持色带开纸质发票）</text>
+  </view>
+  <button class='btn active' bindtap='getElec'>增值普票(电子发票)</button>
+  <view wx:if="{{order.goodsName=='Datacard CD800彩色带(500张)'||order.goodsName=='Datacard CD800彩色带(650张)'}}" class='btn active' bindtap='getPaper'>增值专票(纸质)</view>
+
+</form>

@@ -1,0 +1,61 @@
+<!--pages/business_to_business/business_to_business.wxml-->
+
+<view class='main'>
+
+
+<!-- <text class='formInfo'>请于百度云盘下载并填写盖章公对公转账申购单，然后上传至本系统(<text style="color:red">申购单审核未通过会重新回到未支付可上传申购单状态，请重新上传</text>)
+审核未通过原因如:1.未盖章 2.上传图片不清晰(建议上传高清图) 3.表格信息未填写完整等 如有疑问，请联系客服
+百度云盘地址: https://pan.baidu.com/s/ \n 13lcjNuwfQaZp4D2TXuwoYw</text> -->
+
+<text class='formInfo'>
+☆公对公收款信息：
+户名：江西君和软件技术有限公司
+银行账户：7919 0571 5410 903
+开户行：招商银行南昌高新支行
+
+请转账至以上银行账户并上传转账凭证，转账凭证未通过会重新回到未支付可上传转账凭证状态，请重新上传
+审核未通过原因:上传图片不清晰(建议上传高清图) 如有疑问，请联系客服
+</text>
+
+<block wx:if="{{businessOrders==''}}">
+<view class='warn'>
+您目前暂无公对公转账申请哦~
+</view>
+</block>
+<block wx:else>
+<view class='orderform'  wx:for="{{businessOrders}}" wx:for-index="index"   wx:key="{{index}}">
+<view class='order' >
+<view class='image' data-id="{{index}}" bindtap="goOrderDetail">
+<image wx:if="{{item.goodsName=='明泰IC卡读写器MT3'}}" src='{{mtsrc}}'></image>
+<image wx:if="{{item.goodsName=='德卡T6智能卡读卡器'}}" src='{{dksrc}}'></image>
+<image wx:if="{{item.goodsName=='Datacard CD800彩色带(650张)'||item.goodsName=='Datacard CD800彩色带(500张)'}}" src='{{sdsrc}}'></image>
+</view>
+<view class='text' data-id="{{index}}" bindtap="goOrderDetail">
+<text decode='{{true}}'>
+商品名：{{item.goodsName}}\n￥{{item.goodsPrice}}\t*{{item.buyNum}}
+共计{{item.buyNum}}件商品 合计：￥{{item.allgoodsPrice}} 
+支付方式：{{item.orderType}} \n 支付状态:{{item.orderStatus}} &nbsp;<block wx:if="{{item.remarks!=null}}">{{item.remarks}}</block><block wx:else>订单处理中</block>
+</text>
+</view>
+<view>
+<button class='bill' wx:if="{{(item.orderStatus=='已支付'||(item.goodsName=='Datacard CD800彩色带(500张)')||(item.goodsName=='Datacard CD800彩色带(650张)'))&&!item.status}}" bindtap='goBill'  data-id="{{index}}">开票</button>
+ <text class='bill' wx:if="{{item.status==0}}" >开票中</text>
+<text class='bill' wx:if="{{item.status==1}}" >已开票,请查收\n邮箱</text> 
+</view>
+<!-- <view class="item-delete" bindtap="delBill" data-id="{{index}}">删除</view> -->
+</view>
+<view wx-if="{{item.publicStatus=='0'}}" class='item'>
+<text>上传转账凭证</text>
+      <button bindtap='chooseImage'>添加转账凭证</button>
+      <view class='img'>
+      <image src='{{src}}'></image>
+      </view>
+<button class='bill' wx-if="{{item.publicStatus=='0'}}" bindtap='uploadForm'  data-id="{{index}}">确认上传</button>
+</view>
+<view wx-if="{{item.publicStatus=='2'}}" class='item'>
+该笔订单公对公转账转账凭证正在审核中...
+</view>
+</view>
+</block>
+
+</view>
